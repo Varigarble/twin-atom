@@ -17,8 +17,9 @@
                 <th>creators</th>
                 <td>
                     <select name="creators" size="number_of_options">
-                        <option value="creator 1"></option>
-                        <option value="creator 1"></option>
+                        {% for creator in all_creators %}
+                            <option value="{{ creator }}">{{creator}}</option> 
+                        {% endfor %}
                     </select>
                 </td>
             </tr>

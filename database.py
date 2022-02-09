@@ -28,7 +28,7 @@ def view_all_tasks():
 def get_all_creators():
     db = connect_db()
     query = db.tasks.distinct("creators")
-    creators = []
+    creators = [""]
     for each in query:
         creators.append(each)
     return creators

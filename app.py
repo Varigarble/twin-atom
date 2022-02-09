@@ -14,7 +14,10 @@ def tasks_entry():
 
 @app.route('/tasks_view.html', methods=['GET', 'POST'])
 def tasks_view():
-    return render_template('tasks_view.html', all_tasks = database.view_all_tasks())
+    return render_template('tasks_view.html', 
+    all_tasks = database.view_all_tasks(),
+    all_creators = database.get_all_creators(),
+    )
 
 
 MENU = """Please select one of the following options:
