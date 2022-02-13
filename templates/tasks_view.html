@@ -16,11 +16,16 @@
             <tr>
                 <th>creators</th>
                 <td>
-                    <select name="creators" size="number_of_options">
-                        {% for creator in all_creators %}
-                            <option value="{{ creator }}">{{creator}}</option> 
-                        {% endfor %}
-                    </select>
+                    <form method="POST">
+                        <select name="creators" size="number_of_options">
+                            {% for creator in all_creators %}
+                                <option value="{{ creator }}">{{creator}}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" class="form__submit" value="Submit" name="Submit">
+                        Selected = <elem class="selected_creator">{{ selected_creator }}</elem>:
+                        <elem class="creators_tasks">{{ creators_tasks }}</elem>
+                    </form>
                 </td>
             </tr>
             <tr>

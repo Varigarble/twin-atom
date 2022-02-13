@@ -1,5 +1,5 @@
 from pprint import pprint
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import database
 
 app = Flask(__name__)
@@ -14,9 +14,16 @@ def tasks_entry():
 
 @app.route('/tasks_view.html', methods=['GET', 'POST'])
 def tasks_view():
+    selected_creator = None
+    creators_tasks = None
+    if request.method == "POST":
+        selected_creator = request.form.get("creators")
+        creators_tasks = database.view_all_tasks_by_creators(selected_creator)
     return render_template('tasks_view.html', 
     all_tasks = database.view_all_tasks(),
     all_creators = database.get_all_creators(),
+    selected_creator = selected_creator,
+    creators_tasks = creators_tasks,
     )
 
 
