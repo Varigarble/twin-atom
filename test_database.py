@@ -66,13 +66,13 @@ class test_db_connect(unittest.TestCase):
 
 
     def test_get_all_creators(self):
-        self.assertTrue(len(database.get_all_creators()) >= 1)
-        self.assertEqual(["Varigarble"], database.get_all_creators())
+        self.assertTrue(len(database.get_all_creators()) > 1)
+        self.assertEqual("Varigarble", database.get_all_creators()[1])
         # clear database and assert empty
         client = pymongo.MongoClient()
         db = client['test_task_mgr']
         db.tasks.delete_many({'name': 'test task name'})
-        self.assertTrue(len(database.get_all_creators()) == 0)
+        self.assertTrue(len(database.get_all_creators()) == 1)
 
 
     def test_view_all_tasks_by_creators(self):
@@ -84,6 +84,12 @@ class test_db_connect(unittest.TestCase):
             mocked_input.side_effect = ('test name', 'test creators', '', '', '', '', '', '', '', '')
             test_object = database.create_task()
             self.assertEqual(['test creators'], test_object.creators)
+
+    def test_delete_task(self):
+        database.delete_task({'name': 'test task name'})
+        client = pymongo.MongoClient()
+        db = client['test_task_mgr']
+        self.assertEqual('delete', db.tasks.find({'name': 'test task name'})[0]['marker'])
 
 
 if __name__ == '__main__':

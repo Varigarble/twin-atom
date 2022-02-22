@@ -64,10 +64,10 @@ def add_task_to_db(task_list_items):
         db.tasks.insert_one(asdict(item))
 
 
-def delete_task():
-    # admin/restricted access, warning message
-    # users w/out delete privilege should update task w/ delete request
-    pass
+def delete_task(unwanted_task):
+    # users w/out deletion privilege update task w/ delete request
+    db = connect_db()
+    db.tasks.update_one(unwanted_task, {'$set': {'marker': 'delete'}})
 
 
 def update_task():
