@@ -16,7 +16,7 @@ def connect_db(db_name=None):
     return db
 
 
-def view_all_tasks():
+def view_all_tasks() -> list():
     db = connect_db()
     query = db.tasks.find()
     tasks = []
@@ -25,7 +25,7 @@ def view_all_tasks():
     return tasks
 
 
-def get_all_creators():
+def get_all_creators() -> list():
     db = connect_db()
     query = db.tasks.distinct("creators")
     creators = [""]
@@ -34,7 +34,7 @@ def get_all_creators():
     return creators
 
 
-def view_all_tasks_by_creators(creator_name):
+def view_all_tasks_by_creators(creator_name: str) -> list():
     db = connect_db()
     query = db.tasks.find({"creators" : creator_name})
     stuff = []

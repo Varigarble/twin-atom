@@ -10,7 +10,39 @@ def index():
 
 @app.route('/tasks_entry.html', methods=['GET', 'POST'])
 def tasks_entry():
-    return render_template('tasks_entry.html')
+    name = None
+    creators = None
+    description = None
+    start_date = None
+    completion_date = None
+    due_date = None
+    priority = None
+    assigned_to = None
+    project_file = None
+    status = None
+    if request.method == "POST":
+        name = request.form.get("name")
+        creators = request.form.get("creators")
+        description = request.form.get("description")
+        start_date = request.form.get("start_date")
+        completion_date = request.form.get("completion_date")
+        due_date = request.form.get("due_date")
+        priority = request.form.get("priority")
+        assigned_to = request.form.get("assigned_to")
+        project_file = request.form.get("project_file")
+        status = request.form.get("status")
+    return render_template('tasks_entry.html',
+        name = name,
+        creators = creators,
+        description = description,
+        start_date = start_date,
+        completion_date = completion_date,
+        due_date = due_date,
+        priority = priority,
+        assigned_to = assigned_to,
+        project_file = project_file,
+        status = status,
+    )
 
 @app.route('/tasks_view.html', methods=['GET', 'POST'])
 def tasks_view():

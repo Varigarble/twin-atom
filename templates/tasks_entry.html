@@ -5,35 +5,43 @@
         <table>
             <tr>
                 <th>name</th>
-                <td></td>
+                <td>
+                    <form method="POST">
+                        <p><textarea name="name" id="name" class="form__textarea"></textarea></p>
+                    </form>
+                </td>
             </tr>
             <tr>
                 <th>creators</th>
                 <td>
-                    <select name="creators" size="number_of_options">
-                        <option value="creator 1"></option>
-                        <option value="creator 1"></option>
-                    </select>
+                    <form method="POST">
+                        <p><textarea name="creators" id="creators" class="form__textarea"></textarea></p>
+                    </form>
                 </td>
             </tr>
             <tr>
                 <th>assigned_to</th>
-                <td></td>
-            </tr>
-            <tr>
-                <th>status</th>
-                <td></td>
+                <td>
+                    <form method="POST">
+                        <p><textarea name="assigned_to" id="assigned_to" class="form__textarea"></textarea></p>
+                    </form>
+                </td>
             </tr>
             <tr>
                 <th>priority</th>
-                <td></td>
+                <td>
+                    <form method="POST">
+                        <select name="priority" id="priority">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                </td>
             </tr>
             <tr>
                 <th>start_date</th>
-                <td></td>
-            </tr>
-            <tr>
-                <th>completion_date</th>
                 <td></td>
             </tr>
             <tr>
@@ -42,7 +50,11 @@
             </tr>
             <tr>
                 <th>description</th>
-                <td></td>
+                <td>
+                    <form method="POST">
+                        <p><textarea name="description" id="description" class="form__textarea"></textarea></p>
+                    </form>
+                </td>
             </tr>
             <tr>
                 <th>project_file</th>
@@ -51,6 +63,13 @@
             <tr>
                 <th>data_id</th>
                 <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <form method="POST">
+                        <p><button type="submit" class="form__submit">Submit</button></p>
+                    </form>
+                </td>
             </tr>
         </table>
     </main>
